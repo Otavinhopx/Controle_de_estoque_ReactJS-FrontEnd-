@@ -1,20 +1,29 @@
 import React, {useState} from 'react';
 import api from '../services/api'
+import { useNavigate } from 'react-router-dom';
 
 const Cadastro: React.FC = () => {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [mensagem, setMensagem] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
             const response = await api.post('/usuarios', {nome, email, senha});
-            console.log('Cadastro realizado: ', response.data);
+            setMensagem('Usuário Cadastrado!')
+            navigate('/login')
         }
         catch(error) {
+            setMensagem('Erro ao cadastrar');
             console.error('Erro ao cadastrar: ', error)
         }
+    };
+
+    const handleLogin = () => { 
+        navigate('/login'); 
     };
 
     return (
@@ -40,6 +49,8 @@ const Cadastro: React.FC = () => {
                     onChange={(e) => setSenha(e.target.value)}
                 />
                 <button type='submit'>Cadastrar</button>
+                {mensagem && <p>{mensagem}</p>}
+                <button onClick={handleLogin}>Já tem uma conta? Faça login</button>
             </form>
         </div>
     )
