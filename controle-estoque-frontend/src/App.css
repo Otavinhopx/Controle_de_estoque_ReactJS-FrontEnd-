@@ -40,3 +40,8 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-gradient {
+  background: linear-gradient(135deg, #ebebeb 25%, #ebebeb 50%, #cccccc 75%);
+}
+
