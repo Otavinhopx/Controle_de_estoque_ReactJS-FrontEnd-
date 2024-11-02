@@ -27,31 +27,40 @@ const Cadastro: React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>Cadastro</h1>
+        <div className="flex items-center justify-center h-screen bg-gray-100">
+            <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold mb-6">Cadastro</h1>
             <form onSubmit={handleSubmit}>
                 <input
+                    className="w-full p-3 mb-4 border border-gray-300 rounded"
                     type='text'
                     placeholder='Nome'
                     value={nome}
                     onChange={(e) => setNome(e.target.value)}
                 />
                 <input
+                    className="w-full p-3 mb-4 border border-gray-300 rounded"
                     type='text'
                     placeholder='Email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                    className="w-full p-3 mb-4 border border-gray-300 rounded"
                     type='password'
                     placeholder='Senha'
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
                 />
-                <button type='submit'>Cadastrar</button>
+                <button
+                    className="w-full p-3 bg-gray-500 text-white rounded hover:bg-gray-600" 
+                    type='submit'>Cadastrar</button>
                 {mensagem && <p>{mensagem}</p>}
-                <button onClick={handleLogin}>Já tem uma conta? Faça login</button>
+                <button
+                    className="w-full p-3 mt-4 bg-gray-500 text-white rounded hover:bg-gray-600"
+                    onClick={handleLogin}>Já tem uma conta? Faça login</button>
             </form>
+            </div>
         </div>
     )
 };
