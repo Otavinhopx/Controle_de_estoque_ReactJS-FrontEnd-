@@ -120,6 +120,7 @@ const Produtos: React.FC = () => {
           setFilteredProdutos(updatedProdutos);
           setShowQuantidadeModal(false);
           setQuantidadeEditada('');
+          window.location.reload()
         } else {
           console.error('Erro ao alterar quantidade:', response.data);
         }
@@ -137,6 +138,7 @@ const Produtos: React.FC = () => {
         const updatedProdutos = produtos.filter(produto => produto.id !== produtoId);
         setProdutos(updatedProdutos);
         setFilteredProdutos(updatedProdutos);
+        window.location.reload()
       } catch (error) {
         console.error('Erro ao excluir produto:', error);
       }
@@ -172,7 +174,7 @@ const Produtos: React.FC = () => {
             setShowModal(true);
           }}
         >
-          Adicionar Produto
+          Adicionar
         </button>
       </div>
   
@@ -189,13 +191,13 @@ const Produtos: React.FC = () => {
                 <p><strong>Valor:</strong> {produto.valor}</p>
                 <p><strong>Quantidade:</strong> {produto.quantidade}</p>
                 <button
-                  className="mr-1 bg-gray-500 text-white rounded hover:bg-gray-600 p-1"
+                  className="mr-1 mb-1 bg-gray-500 text-white rounded hover:bg-gray-600 p-1"
                   onClick={(e) => { e.stopPropagation(); handleEditProduto(produto); }}
                 >
                   Editar
                 </button>
                 <button
-                  className="mr-1 bg-gray-500 text-white rounded hover:bg-gray-600 p-1"
+                  className="mr-1 mb-1 bg-gray-500 text-white rounded hover:bg-gray-600 p-1"
                   onClick={(e) => { e.stopPropagation(); handleOpenQuantidadeModal(produto); }}
                 >
                   Alterar Quantidade
